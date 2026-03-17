@@ -48,6 +48,7 @@ export default function InventoryTable({ inventory, onEdit, onDelete }) {
           <table className={styles.table}>
             <thead>
               <tr>
+                <Th col="id" label="ID" />
                 <Th col="equipo" label="Equipo" />
                 <Th col="usuario" label="Usuario" />
                 <Th col="sede" label="Sede" />
@@ -63,6 +64,7 @@ export default function InventoryTable({ inventory, onEdit, onDelete }) {
               {filtered.map(r => (
                 <>
                   <tr key={r.id} className={styles.row} onClick={() => setExpanded(expanded === r.id ? null : r.id)}>
+                    <td className={styles.td}><span className="tag">{r.id}</span></td>
                     <td className={styles.td}>
                       <span className={styles.equipName}>{r.equipo}</span>
                       {r.dominio && <span style={{color:"var(--text3)",fontSize:11,display:"block"}}>{r.dominio}</span>}
@@ -86,7 +88,7 @@ export default function InventoryTable({ inventory, onEdit, onDelete }) {
                   </tr>
                   {expanded === r.id && (
                     <tr key={r.id + "_exp"} className={styles.expandRow}>
-                      <td colSpan={9} className={styles.expandCell}>
+                      <td colSpan={10} className={styles.expandCell}>
                         <div className={styles.expandGrid}>
                           <InfoBlock title="CPU" value={`${r.cpu} (${r.coresHilos})`} />
                           <InfoBlock title="Serial BIOS" value={r.serial} mono />

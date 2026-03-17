@@ -243,16 +243,16 @@ export default function InventoryForm({ initial, onSave, onCancel, parseTxt }) {
               </div>
 
               <div>
+                <label>Proceso</label>
+                <SearchSelect value={form.proceso} onChange={v => set("proceso", v)} options={PROCESO} placeholder="Buscar proceso…" />
+              </div>
+              
+              <div>
                 <label>Tipo de proceso</label>
                 <select value={form.tipoProceso} onChange={e => set("tipoProceso", e.target.value)}>
                   <option value="">Selecciona tipo…</option>
                   {TIPO_PROCESO.map(a => <option key={a}>{a}</option>)}
                 </select>
-              </div>
-
-              <div>
-                <label>Proceso</label>
-                <SearchSelect value={form.proceso} onChange={v => set("proceso", v)} options={PROCESO} placeholder="Buscar proceso…" />
               </div>
 
               <div>

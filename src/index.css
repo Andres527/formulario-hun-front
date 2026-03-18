@@ -1,123 +1,57 @@
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap');
 
-:root {
-  --bg:        #0d0f12;
-  --surface:   #13161c;
-  --surface2:  #1a1e27;
-  --border:    #252a36;
-  --border2:   #2e3446;
-  --accent:    #00e5a0;
-  --accent2:   #0099ff;
-  --warn:      #ff6b35;
-  --text:      #e8eaf0;
-  --text2:     #8891a8;
-  --text3:     #555e73;
-  --font-mono: 'Space Mono', monospace;
-  --font-body: 'DM Sans', sans-serif;
-  --radius:    6px;
-  --radius-lg: 12px;
-  --shadow:    0 4px 24px rgba(0,0,0,0.4);
-}
+@import "tailwindcss";
 
-html, body, #root {
-  height: 100%;
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 1.5;
-}
 
+/* Scrollbar personalizado */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+::-webkit-scrollbar-track { background: #0d0f12; }
+::-webkit-scrollbar-thumb { background: #2e3446; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #555e73; }
 
+/* Estilos globales de inputs/select/textarea */
 input, select, textarea {
-  font-family: var(--font-body);
+  font-family: 'DM Sans', sans-serif;
   font-size: 13px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  color: var(--text);
+  background: #1a1e27;
+  border: 1px solid #252a36;
+  border-radius: 6px;
+  color: #e8eaf0;
   padding: 8px 12px;
   outline: none;
   transition: border-color 0.15s, box-shadow 0.15s;
   width: 100%;
 }
 input:focus, select:focus, textarea:focus {
-  border-color: var(--accent);
+  border-color: #00e5a0;
   box-shadow: 0 0 0 3px rgba(0,229,160,0.1);
 }
-input::placeholder { color: var(--text3); }
-select option { background: var(--surface2); }
+input::placeholder { color: #555e73; }
+select option { background: #1a1e27; }
 
-button {
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 600;
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23555e73' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 32px !important;
   cursor: pointer;
-  border: none;
-  border-radius: var(--radius);
-  padding: 9px 18px;
-  transition: all 0.15s;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-}
-button:active { transform: scale(0.97); }
-
-.btn-primary {
-  background: var(--accent);
-  color: #0d0f12;
-}
-.btn-primary:hover { background: #00ffb3; box-shadow: 0 0 16px rgba(0,229,160,0.3); }
-
-.btn-secondary {
-  background: var(--surface2);
-  color: var(--text);
-  border: 1px solid var(--border2);
-}
-.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
-
-.btn-danger {
-  background: transparent;
-  color: var(--warn);
-  border: 1px solid var(--warn);
-}
-.btn-danger:hover { background: var(--warn); color: white; }
-
-.btn-icon {
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  color: var(--text2);
-  padding: 7px;
-  border-radius: var(--radius);
-}
-.btn-icon:hover { border-color: var(--accent); color: var(--accent); }
-
-label {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text2);
-  display: block;
-  margin-bottom: 5px;
 }
 
-.tag {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  padding: 2px 8px;
-  border-radius: 3px;
-  background: var(--surface2);
-  border: 1px solid var(--border2);
-  color: var(--text2);
+select:invalid,
+select option[value=""] {
+  color: #555e73;
 }
-.tag.green { background: rgba(0,229,160,0.1); border-color: rgba(0,229,160,0.3); color: var(--accent); }
-.tag.blue  { background: rgba(0,153,255,0.1); border-color: rgba(0,153,255,0.3); color: var(--accent2); }
-.tag.orange{ background: rgba(255,107,53,0.1); border-color: rgba(255,107,53,0.3); color: var(--warn); }
 
-.mono { font-family: var(--font-mono); }
+select option {
+  color: #e8eaf0;
+  background: #1a1e27;
+}
+
+
+/* Animaciones usadas en el form */
+@keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes fadeDown { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }

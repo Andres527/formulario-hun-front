@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const API = "https://ubiquitous-space-succotash-749pw9xjr793wj7-3001.app.github.dev/api";
+const API = "http://localhost:3001/api";
 
 export function useInventory() {
   const [inventory, setInventory] = useState([]);
